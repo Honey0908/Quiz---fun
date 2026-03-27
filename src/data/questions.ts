@@ -1,53 +1,51 @@
 import type { Question } from '../types';
 
 export const questions: Question[] = [
+  // ── EASY ────────────────────────────────────────────────────────────────
   {
     id: 1,
-    question: '🛠️ In GitHub Copilot, what are "Tools" used for?',
-    answer: 'Extending Copilot with external actions and data sources',
+    question: '💬 Which company created ChatGPT?',
+    answer: 'OpenAI',
     explanation:
-      '🔧 Tools let Copilot call external functions — like searching the web, querying a database, or running code — going beyond pure text generation!',
+      '🏢 OpenAI was founded in 2015 and released ChatGPT in November 2022 — it gained 1 million users in just 5 days, making it the fastest-growing app in history at the time!',
   },
-
   {
     id: 2,
-    question: '🎓 What is a Copilot "Skill" (.instructions.md / SKILL.md)?',
-    answer:
-      'A file that provides domain-specific instructions to guide Copilot',
+    question: '🤖 Which company created Claude AI?',
+    answer: 'Anthropic',
     explanation:
-      '📚 Skills package reusable expertise — like testing patterns or API design rules — so Copilot applies consistent best practices automatically for that domain!',
+      '🛡️ Anthropic was founded in 2021 by former OpenAI researchers, including Dario and Daniela Amodei. Claude is their AI assistant, built with a focus on safety and helpfulness — guided by their "Constitutional AI" approach!',
   },
-
   {
     id: 3,
-    question: '📐 What does "RAG" stand for in AI development?',
-    answer: 'Retrieval-Augmented Generation',
+    question: '🔵 What does the @ symbol do in GitHub Copilot Chat?',
+    answer:
+      'It references a participant or agent to scope the conversation (e.g. @workspace, @vscode)',
     explanation:
-      '📦 RAG combines a retrieval step (fetching relevant docs/data) with generation so the LLM answers with up-to-date, context-specific information instead of just its training data!',
+      '🎯 @workspace tells Copilot to search your entire project for context. @vscode lets you ask about editor settings. The @ symbol is your shortcut to bringing in the right expert for the job!',
   },
-
   {
     id: 4,
-    question: '🔁 What is "prompt chaining" in AI agent workflows?',
-    answer: 'Passing the output of one prompt as input to the next',
+    question: '📁 What is the # symbol used for in GitHub Copilot Chat?',
+    answer: 'Attaching a specific file or context reference to your prompt',
     explanation:
-      '⛓️ Prompt chaining breaks complex tasks into steps — each LLM call does one job and feeds its result into the next, improving accuracy and reducing errors!',
+      '📎 Typing #filename.ts lets you attach a specific file to your Copilot conversation. Instead of Copilot guessing what code you mean, you hand it exactly the right context!',
   },
-
   {
     id: 5,
-    question: '🌡️ What does "temperature" control in an AI language model?',
-    answer: 'The randomness / creativity of the generated output',
+    question: '🔢 What is a "token" in the context of LLMs?',
+    answer:
+      'A chunk of text (roughly 3-4 characters or ~¾ of a word) that the model processes as a single unit',
     explanation:
-      '🎲 Temperature 0 = very deterministic and focused; temperature 1+ = more creative and varied. For coding tasks, lower temperatures are usually preferred!',
+      '📊 LLMs don\'t read character-by-character or word-by-word — they use tokens. "unhappiness" might be 3 tokens. This is why context window sizes are measured in tokens, not words!',
   },
   {
     id: 6,
-    question:
-      '🔍 What VS Code slash command asks Copilot to explain selected code?',
-    answer: '/explain',
+    question: '🤖 What is "Agentic AI"?',
+    answer:
+      'AI that autonomously pursues goals over multiple steps by planning, calling tools, and adapting based on results',
     explanation:
-      '💬 Highlight any code, open Copilot Chat, type /explain and Copilot will describe what the code does line by line — great for onboarding to a new codebase!',
+      '🚀 Agentic AI goes beyond answering a single prompt — it breaks down a goal, decides on actions, executes tools (read files, run code, search web), evaluates the outcome, and loops until the task is complete, much like a human developer would!',
   },
   {
     id: 7,
@@ -56,38 +54,100 @@ export const questions: Question[] = [
     explanation:
       '🔌 MCP is an open standard that lets AI models securely connect to external tools, APIs, and data sources — enabling agents to act beyond their training data!',
   },
-
   {
     id: 8,
-    question:
-      '⚙️ In a Copilot agent loop, what triggers the agent to STOP iterating?',
+    question: '🎭 What is "role prompting" in AI engineering?',
     answer:
-      'When the model emits no further tool calls (a final text response)',
+      'Instructing the model to adopt a specific persona or role to improve output quality',
     explanation:
-      '🔄 Agents run in a loop: plan → call tool → observe result → re-plan. The loop exits when the model decides all goals are met and returns a pure text answer with no pending tool calls.',
+      '👤 "You are a senior TypeScript engineer with 10 years of experience..." instantly shifts the model\'s tone, vocabulary, and depth. Role prompting is one of the simplest and most effective prompt engineering tricks!',
   },
+
+  // ── MEDIUM ───────────────────────────────────────────────────────────────
   {
     id: 9,
     question:
-      '🧩 What is the key difference between a Copilot "participant" (@workspace) and a custom "agent"?',
+      '🔄 What is the difference between "zero-shot" and "one-shot" prompting?',
     answer:
-      'Participants are built-in scoped contexts; custom agents are fully programmable with their own tools and instructions',
+      'Zero-shot = no examples given; One-shot = exactly one example given to guide the model',
     explanation:
-      '🎯 @workspace, @vscode etc. are first-party participants that scope context. Custom agents (via the extension API or MCP) can define their own tool set, system prompt, and multi-step reasoning logic.',
+      "🎯 Zero-shot relies purely on the model's training. One-shot gives it a single example to pattern-match from. Few-shot gives 2-5 examples. More examples generally = better accuracy for complex tasks!",
   },
-
   {
     id: 10,
-    question:
-      '🔬 What is "few-shot prompting" and why is it powerful for Copilot?',
-    answer:
-      'Providing 2-5 worked examples inside the prompt so the model infers the desired pattern',
+    question: '📐 What does "RAG" stand for in AI development?',
+    answer: 'Retrieval-Augmented Generation',
     explanation:
-      "🎯 Few-shot prompting leverages in-context learning — no fine-tuning needed. Showing Copilot 3 examples of your team's test style instantly aligns its output with your conventions.",
+      '📦 RAG combines a retrieval step (fetching relevant docs/data) with generation so the LLM answers with up-to-date, context-specific information instead of just its training data!',
   },
-
   {
     id: 11,
+    question: '🛠️ In GitHub Copilot, what are "Tools" used for?',
+    answer: 'Extending Copilot with external actions and data sources',
+    explanation:
+      '🔧 Tools let Copilot call external functions — like searching the web, querying a database, or running code — going beyond pure text generation!',
+  },
+  {
+    id: 12,
+    question: '🎓 What is a Copilot "Skill" (.instructions.md / SKILL.md)?',
+    answer:
+      'A file that provides domain-specific instructions to guide Copilot',
+    explanation:
+      '📚 Skills package reusable expertise — like testing patterns or API design rules — so Copilot applies consistent best practices automatically for that domain!',
+  },
+  {
+    id: 13,
+    question: '🔁 What is "prompt chaining" in AI agent workflows?',
+    answer: 'Passing the output of one prompt as input to the next',
+    explanation:
+      '⛓️ Prompt chaining breaks complex tasks into steps — each LLM call does one job and feeds its result into the next, improving accuracy and reducing errors!',
+  },
+  {
+    id: 14,
+    question: '🎬 Give any 5 character names from the "Dhurandhar"?',
+    answer:
+      'Hamza Ali Mazari, Rehman Dakait, SP Chaudhary Aslam, Major Iqbal, Ajay Sanyal',
+    explanation:
+      '🎭 This is a recall-based question where you identify key characters from the movie Dhurandhar, which features a mix of undercover agents, law enforcement, and underworld figures.',
+  },
+  {
+    id: 15,
+    question:
+      '🤔 What is the difference between Copilot Agent mode, Plan mode, and Ask mode?',
+    answer:
+      'Ask = conversational Q&A only; Plan = generates a step-by-step plan for review before acting; Agent = autonomously executes the plan by calling tools and editing files',
+    explanation:
+      '🗺️ Ask mode just answers questions. Plan mode produces a structured action plan and waits for your approval. Agent mode goes further — it reads files, runs commands, and iterates until the goal is done, all in one go.',
+  },
+  {
+    id: 16,
+    question: '⚔️ What is the difference between Copilot Skills and Agents?',
+    answer:
+      'Skills are passive instruction files that shape HOW Copilot responds; Agents are active runtimes that autonomously plan, call tools, and take actions',
+    explanation:
+      "📘 A Skill (.instructions.md / SKILL.md) is like a rulebook — it changes the model's behaviour through injected context. An Agent is an execution engine that reads that rulebook and then actually does the work: running tools, editing files, and iterating toward a goal.",
+  },
+  {
+    id: 17,
+    question:
+      '🔨 Can you give 3 real examples of tools an AI agent can use to complete a task?.',
+    answer:
+      'Tool use means the agent calls external functions during its reasoning loop — e.g. read_file, run_terminal, browser_navigate',
+    explanation:
+      '⚙️ Instead of only generating text, an agent can invoke structured tools: read_file (fetch source code), run_terminal (execute shell commands), browser_navigate (open a webpage). Each tool call returns a result that the agent uses to plan its next step.',
+  },
+  {
+    id: 18,
+    question: '🌐 Name 7 popular MCP servers available today.',
+    answer:
+      'GitHub, Playwright, Postman, Notion, GitKraken, Context7, Sequential Thinking',
+    explanation:
+      '🔌 MCP servers extend Copilot agents: GitHub (repo actions), Playwright (browser automation), Postman (API testing), Notion (workspace data), GitKraken (git/PR workflows), Context7 (live library docs), Sequential Thinking (structured reasoning).',
+  },
+
+  // ── ADVANCED ─────────────────────────────────────────────────────────────
+  {
+    id: 19,
     question:
       '🗂️ In Copilot Skills (.instructions.md), what does the "applyTo" frontmatter field control?',
     answer:
@@ -95,23 +155,90 @@ export const questions: Question[] = [
     explanation:
       '📌 Setting `applyTo: "**/*.test.ts"` means Copilot loads those testing instructions only when working on test files — keeping context focused and avoiding instruction bloat.',
   },
-
   {
-    id: 12,
-    question:
-      '⚠️ What is "hallucination" in a coding LLM and what is the best mitigation strategy?',
-    answer:
-      'Confidently generating plausible-but-wrong code/APIs; mitigated by grounding the model with real context (RAG, #codebase, docs)',
-    explanation:
-      '🧱 LLMs predict likely tokens, not ground truth. Hallucinations (invented APIs, wrong signatures) drop dramatically when you feed the model real source files, type definitions, or official docs as context.',
-  },
-  {
-    id: 13,
+    id: 20,
     question:
       '🔗 In an MCP server setup, what is a "resource" vs a "tool" vs a "prompt"?',
     answer:
       'Resource = read-only data the model can fetch; Tool = callable action with side-effects; Prompt = reusable templated instruction',
     explanation:
       '📚 MCP separates concerns cleanly: resources expose context (files, DB rows), tools perform actions (run query, write file), and prompts are pre-built message templates — together they form a composable AI capability layer.',
+  },
+  {
+    id: 21,
+    question:
+      '📄 What is the difference between .github/copilot-instructions.md and *.instructions.md files?',
+    answer:
+      'copilot-instructions.md applies globally to every chat; *.instructions.md files are scoped via "applyTo" globs and activate only for matching files',
+    explanation:
+      '🎯 .github/copilot-instructions.md is always injected into every Copilot Chat session. *.instructions.md (e.g. in .github/instructions/) use frontmatter like `applyTo: "**/*.tsx"` to load domain-specific rules only when relevant files are open — avoiding context bloat.',
+  },
+  {
+    id: 22,
+    question: '🧬 What is "embedding" in AI and how is it used in code search?',
+    answer:
+      'Converting text/code into a numerical vector that captures semantic meaning, enabling similarity search',
+    explanation:
+      '🔍 Embeddings let you find code that is semantically similar — not just keyword matched. "fetch user data" and "retrieve account info" would have similar embeddings even though the words differ!',
+  },
+  {
+    id: 23,
+    question:
+      '🪝 What are "hooks" in GitHub Copilot / AI agent workflows, and when should you use them?',
+    answer:
+      'Hooks are event-driven callbacks that trigger custom logic at defined points in the agent lifecycle (e.g. before/after a tool call or response)',
+    explanation:
+      '🔗 Hooks let you intercept the agent loop — for example, a pre-tool hook can validate or log a planned action, and a post-response hook can reformat output. Use them for auditing, guardrails, telemetry, or injecting extra context at runtime without changing the core prompt.',
+  },
+  {
+    id: 24,
+    question:
+      '📦 What happens when an AI agent\'s context window fills up, and how can you "compact" it?',
+    answer:
+      'Older context is truncated; in GitHub Copilot you can use /compact to summarise and reduce the current conversation context',
+    explanation:
+      '🗜️ When the context window fills up, earlier messages are dropped, which can affect accuracy. In GitHub Copilot (VS Code), the /compact command helps by summarising the conversation into a shorter version, freeing up space while keeping important context so the agent can continue effectively.',
+  },
+  {
+    id: 25,
+    question:
+      '☁️ What is the difference between a Cloud agent, a Background agent, and a Local agent?',
+    answer:
+      'Cloud = runs on provider servers (persistent, shareable); Background = runs asynchronously without blocking your IDE; Local = runs on your machine with direct file/terminal access',
+    explanation:
+      '🖥️ Local agents (e.g. Copilot in VS Code) run in your editor with full filesystem access. Background agents execute tasks asynchronously — you can kick one off and check results later. Cloud agents (e.g. GitHub Copilot Workspace) run entirely on remote infrastructure, enabling collaboration and longer-running jobs without tying up your laptop.',
+  },
+  {
+    id: 26,
+    question:
+      '🛠️ Name the top 5 most widely used AI coding assistants available in 2026.',
+    answer:
+      'GitHub Copilot, Cursor, Claude (Anthropic), ChatGPT / Codex (OpenAI), Gemini Code Assist (Google)',
+    explanation:
+      '🚀 GitHub Copilot (Microsoft/GitHub) leads the market with deep IDE integration. Cursor took the developer world by storm with its AI-native editor. Claude (Anthropic) powers many coding workflows via API and integrations. ChatGPT/Codex (OpenAI) remains hugely popular for code generation. Gemini Code Assist (Google) rounds out the top 5 with strong cloud and workspace integration. Honourable mentions: Amazon Q, Tabnine, and Windsurf (Codeium)!',
+  },
+  {
+    id: 27,
+    question: '🧭 What is an "orchestrator" in AI agent architecture?',
+    answer: 'A component that manages planning, tool usage, and execution flow',
+    explanation:
+      '🎯 Orchestrators coordinate multiple steps, tools, and agents — acting as the brain of an agentic system.',
+  },
+  {
+    id: 28,
+    question:
+      '⚡ What are the latest stable versions of Next.js and React as of early 2026?',
+    answer: 'Next.js 16.2 and React 19.2',
+    explanation:
+      '🚀 Next.js 16 launched in October 2025 with Turbopack as the default bundler, Cache Components, and React 19.2 support — followed by 16.1 (stable Turbopack file system caching) and 16.2 (AI-ready scaffolding, experimental Agent DevTools). ⚛️ React 19 dropped in December 2024, React 19.1 in June 2025, and React 19.2 in October 2025 — introducing the <Activity /> component, useEffectEvent hook, and Performance Tracks in Chrome DevTools!',
+  },
+  {
+    id: 29,
+    question:
+      '🏷️ What is "agent handoff" and what data must be passed during one?',
+    answer:
+      'Transferring control from one agent to another mid-task; the handoff payload must include the current goal, relevant conversation history, tool results so far, and any constraints the receiving agent must respect',
+    explanation:
+      '🤝 A handoff without context is like handing a case to a new lawyer without briefing them. The sending agent packages a structured handoff object — goal, progress, constraints, outputs — so the receiving agent can pick up exactly where the previous one left off, with no loss of state!',
   },
 ];
