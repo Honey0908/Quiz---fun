@@ -241,4 +241,33 @@ export const questions: Question[] = [
     explanation:
       '🤝 A handoff without context is like handing a case to a new lawyer without briefing them. The sending agent packages a structured handoff object — goal, progress, constraints, outputs — so the receiving agent can pick up exactly where the previous one left off, with no loss of state!',
   },
+  {
+    id: 30,
+    question: '🔗 What is n8n and what is it used for?',
+    answer:
+      'n8n is a workflow automation tool that connects apps, APIs, and services to automate tasks',
+    explanation:
+      '⚙️ n8n (short for "nodemation") lets you build workflows visually or with code — like triggering actions, calling APIs, processing data, and integrating tools. It is similar to Zapier but more developer-friendly and can be self-hosted.',
+  },
+  {
+    id: 31,
+    question:
+      '🧠 If you want to customize Copilot responses in the chat window, what should you configure?',
+    answer:
+      'Update memory/instruction context: use user memory for persistent preferences and add .github/copilot-instructions.md or scoped *.instructions.md files',
+    explanation: `Simple mental model 📌
+
+Memory = your personal behavior preference layer
+Global instruction file = always-on project rulebook
+Scoped instruction files = conditional rulebooks by file/task
+Current prompt = immediate request for this one response`,
+  },
+  {
+    id: 32,
+    question:
+      '🏆 In Anthropic Claude, which model tier is considered the most capable overall?',
+    answer: 'Opus (the Claude Opus tier) / Mythos (the latest and greatest)',
+    explanation:
+      '🧩 Anthropic uses model tiers like Haiku (fast/light), Sonnet (balanced), and Opus (highest capability). So if someone asks for the "best" Claude model in terms of raw capability, the answer is the latest Claude Opus release.',
+  },
 ];
