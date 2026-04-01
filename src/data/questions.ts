@@ -16,6 +16,7 @@ export const questions: Question[] = [
     explanation:
       '🛡️ Anthropic was founded in 2021 by former OpenAI researchers, including Dario and Daniela Amodei. Claude is their AI assistant, built with a focus on safety and helpfulness — guided by their "Constitutional AI" approach!',
   },
+
   {
     id: 3,
     question: '🔵 What does the @ symbol do in GitHub Copilot Chat?',
@@ -49,7 +50,7 @@ export const questions: Question[] = [
   },
   {
     id: 7,
-    question: '🤝 What is "MCP" in the context of AI tools and agents?',
+    question: '🤝 What is "MCP"?',
     answer: 'Model Context Protocol',
     explanation:
       '🔌 MCP is an open standard that lets AI models securely connect to external tools, APIs, and data sources — enabling agents to act beyond their training data!',
@@ -97,13 +98,6 @@ export const questions: Question[] = [
   },
   {
     id: 13,
-    question: '🔁 What is "prompt chaining" in AI agent workflows?',
-    answer: 'Passing the output of one prompt as input to the next',
-    explanation:
-      '⛓️ Prompt chaining breaks complex tasks into steps — each LLM call does one job and feeds its result into the next, improving accuracy and reducing errors!',
-  },
-  {
-    id: 14,
     question: '🎬 Give any 5 character names from the "Dhurandhar"?',
     answer:
       'Hamza Ali Mazari, Rehman Dakait, SP Chaudhary Aslam, Major Iqbal, Ajay Sanyal',
@@ -111,7 +105,7 @@ export const questions: Question[] = [
       '🎭 This is a recall-based question where you identify key characters from the movie Dhurandhar, which features a mix of undercover agents, law enforcement, and underworld figures.',
   },
   {
-    id: 15,
+    id: 14,
     question:
       '🤔 What is the difference between Copilot Agent mode, Plan mode, and Ask mode?',
     answer:
@@ -120,7 +114,7 @@ export const questions: Question[] = [
       '🗺️ Ask mode just answers questions. Plan mode produces a structured action plan and waits for your approval. Agent mode goes further — it reads files, runs commands, and iterates until the goal is done, all in one go.',
   },
   {
-    id: 16,
+    id: 15,
     question: '⚔️ What is the difference between Copilot Skills and Agents?',
     answer:
       'Skills are passive instruction files that shape HOW Copilot responds; Agents are active runtimes that autonomously plan, call tools, and take actions',
@@ -128,16 +122,7 @@ export const questions: Question[] = [
       "📘 A Skill (.instructions.md / SKILL.md) is like a rulebook — it changes the model's behaviour through injected context. An Agent is an execution engine that reads that rulebook and then actually does the work: running tools, editing files, and iterating toward a goal.",
   },
   {
-    id: 17,
-    question:
-      '🔨 Can you give 3 real examples of tools an AI agent can use to complete a task?.',
-    answer:
-      'Tool use means the agent calls external functions during its reasoning loop — e.g. read_file, run_terminal, browser_navigate',
-    explanation:
-      '⚙️ Instead of only generating text, an agent can invoke structured tools: read_file (fetch source code), run_terminal (execute shell commands), browser_navigate (open a webpage). Each tool call returns a result that the agent uses to plan its next step.',
-  },
-  {
-    id: 18,
+    id: 16,
     question: '🌐 Name 7 popular MCP servers available today.',
     answer:
       'GitHub, Playwright, Postman, Notion, GitKraken, Context7, Sequential Thinking',
@@ -147,7 +132,7 @@ export const questions: Question[] = [
 
   // ── ADVANCED ─────────────────────────────────────────────────────────────
   {
-    id: 19,
+    id: 17,
     question:
       '🗂️ In Copilot Skills (.instructions.md), what does the "applyTo" frontmatter field control?',
     answer:
@@ -156,7 +141,7 @@ export const questions: Question[] = [
       '📌 Setting `applyTo: "**/*.test.ts"` means Copilot loads those testing instructions only when working on test files — keeping context focused and avoiding instruction bloat.',
   },
   {
-    id: 20,
+    id: 18,
     question:
       '🔗 In an MCP server setup, what is a "resource" vs a "tool" vs a "prompt"?',
     answer:
@@ -165,7 +150,7 @@ export const questions: Question[] = [
       '📚 MCP separates concerns cleanly: resources expose context (files, DB rows), tools perform actions (run query, write file), and prompts are pre-built message templates — together they form a composable AI capability layer.',
   },
   {
-    id: 21,
+    id: 19,
     question:
       '📄 What is the difference between .github/copilot-instructions.md and *.instructions.md files?',
     answer:
@@ -174,7 +159,7 @@ export const questions: Question[] = [
       '🎯 .github/copilot-instructions.md is always injected into every Copilot Chat session. *.instructions.md (e.g. in .github/instructions/) use frontmatter like `applyTo: "**/*.tsx"` to load domain-specific rules only when relevant files are open — avoiding context bloat.',
   },
   {
-    id: 22,
+    id: 20,
     question: '🧬 What is "embedding" in AI and how is it used in code search?',
     answer:
       'Converting text/code into a numerical vector that captures semantic meaning, enabling similarity search',
@@ -182,7 +167,7 @@ export const questions: Question[] = [
       '🔍 Embeddings let you find code that is semantically similar — not just keyword matched. "fetch user data" and "retrieve account info" would have similar embeddings even though the words differ!',
   },
   {
-    id: 23,
+    id: 21,
     question:
       '🪝 What are "hooks" in GitHub Copilot / AI agent workflows, and when should you use them?',
     answer:
@@ -191,7 +176,7 @@ export const questions: Question[] = [
       '🔗 Hooks let you intercept the agent loop — for example, a pre-tool hook can validate or log a planned action, and a post-response hook can reformat output. Use them for auditing, guardrails, telemetry, or injecting extra context at runtime without changing the core prompt.',
   },
   {
-    id: 24,
+    id: 22,
     question:
       '📦 What happens when an AI agent\'s context window fills up, and how can you "compact" it?',
     answer:
@@ -200,7 +185,7 @@ export const questions: Question[] = [
       '🗜️ When the context window fills up, earlier messages are dropped, which can affect accuracy. In GitHub Copilot (VS Code), the /compact command helps by summarising the conversation into a shorter version, freeing up space while keeping important context so the agent can continue effectively.',
   },
   {
-    id: 25,
+    id: 23,
     question:
       '☁️ What is the difference between a Cloud agent, a Background agent, and a Local agent?',
     answer:
@@ -209,7 +194,7 @@ export const questions: Question[] = [
       '🖥️ Local agents (e.g. Copilot in VS Code) run in your editor with full filesystem access. Background agents execute tasks asynchronously — you can kick one off and check results later. Cloud agents (e.g. GitHub Copilot Workspace) run entirely on remote infrastructure, enabling collaboration and longer-running jobs without tying up your laptop.',
   },
   {
-    id: 26,
+    id: 24,
     question:
       '🛠️ Name the top 5 most widely used AI coding assistants available in 2026.',
     answer:
@@ -218,14 +203,14 @@ export const questions: Question[] = [
       '🚀 GitHub Copilot (Microsoft/GitHub) leads the market with deep IDE integration. Cursor took the developer world by storm with its AI-native editor. Claude (Anthropic) powers many coding workflows via API and integrations. ChatGPT/Codex (OpenAI) remains hugely popular for code generation. Gemini Code Assist (Google) rounds out the top 5 with strong cloud and workspace integration. Honourable mentions: Amazon Q, Tabnine, and Windsurf (Codeium)!',
   },
   {
-    id: 27,
+    id: 25,
     question: '🧭 What is an "orchestrator" in AI agent architecture?',
     answer: 'A component that manages planning, tool usage, and execution flow',
     explanation:
       '🎯 Orchestrators coordinate multiple steps, tools, and agents — acting as the brain of an agentic system.',
   },
   {
-    id: 28,
+    id: 26,
     question:
       '⚡ What are the latest stable versions of Next.js and React as of early 2026?',
     answer: 'Next.js 16.2 and React 19.2',
@@ -233,7 +218,7 @@ export const questions: Question[] = [
       '🚀 Next.js 16 launched in October 2025 with Turbopack as the default bundler, Cache Components, and React 19.2 support — followed by 16.1 (stable Turbopack file system caching) and 16.2 (AI-ready scaffolding, experimental Agent DevTools). ⚛️ React 19 dropped in December 2024, React 19.1 in June 2025, and React 19.2 in October 2025 — introducing the <Activity /> component, useEffectEvent hook, and Performance Tracks in Chrome DevTools!',
   },
   {
-    id: 29,
+    id: 27,
     question:
       '🏷️ What is "agent handoff" and what data must be passed during one?',
     answer:
@@ -242,15 +227,7 @@ export const questions: Question[] = [
       '🤝 A handoff without context is like handing a case to a new lawyer without briefing them. The sending agent packages a structured handoff object — goal, progress, constraints, outputs — so the receiving agent can pick up exactly where the previous one left off, with no loss of state!',
   },
   {
-    id: 30,
-    question: '🔗 What is n8n and what is it used for?',
-    answer:
-      'n8n is a workflow automation tool that connects apps, APIs, and services to automate tasks',
-    explanation:
-      '⚙️ n8n (short for "nodemation") lets you build workflows visually or with code — like triggering actions, calling APIs, processing data, and integrating tools. It is similar to Zapier but more developer-friendly and can be self-hosted.',
-  },
-  {
-    id: 31,
+    id: 28,
     question:
       '🧠 If you want to customize Copilot responses in the chat window, what should you configure?',
     answer:
@@ -263,11 +240,35 @@ Scoped instruction files = conditional rulebooks by file/task
 Current prompt = immediate request for this one response`,
   },
   {
-    id: 32,
+    id: 29,
     question:
       '🏆 In Anthropic Claude, which model tier is considered the most capable overall?',
     answer: 'Opus (the Claude Opus tier) / Mythos (the latest and greatest)',
     explanation:
       '🧩 Anthropic uses model tiers like Haiku (fast/light), Sonnet (balanced), and Opus (highest capability). So if someone asks for the "best" Claude model in terms of raw capability, the answer is the latest Claude Opus release.',
   },
+  // {
+  //   id: 30,
+  //   question: '🔁 What is "prompt chaining" in AI agent workflows?',
+  //   answer: 'Passing the output of one prompt as input to the next',
+  //   explanation:
+  //     '⛓️ Prompt chaining breaks complex tasks into steps — each LLM call does one job and feeds its result into the next, improving accuracy and reducing errors!',
+  // },
+  // {
+  //   id: 31,
+  //   question:
+  //     '🔨 Can you give 3 real examples of tools an AI agent can use to complete a task?',
+  //   answer:
+  //     'Tool use means the agent calls external functions during its reasoning loop — e.g. read_file, run_terminal, browser_navigate',
+  //   explanation:
+  //     '⚙️ Instead of only generating text, an agent can invoke structured tools: read_file (fetch source code), run_terminal (execute shell commands), browser_navigate (open a webpage). Each tool call returns a result that the agent uses to plan its next step.',
+  // },
+  // {
+  //   id: 32,
+  //   question: '🔗 What is n8n and what is it used for?',
+  //   answer:
+  //     'n8n is a workflow automation tool that connects apps, APIs, and services to automate tasks',
+  //   explanation:
+  //     '⚙️ n8n (short for "nodemation") lets you build workflows visually or with code — like triggering actions, calling APIs, processing data, and integrating tools. It is similar to Zapier but more developer-friendly and can be self-hosted.',
+  // },
 ];
