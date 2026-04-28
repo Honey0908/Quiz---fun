@@ -4,13 +4,14 @@ import Scoreboard from '../components/Scoreboard';
 import QuestionCard from '../components/QuestionCard';
 import BottomNav from '../components/BottomNav';
 import type {
+  Question,
   QuizLocationState,
   TeamName,
   Scores,
   TeamNames,
   PersistedQuizState,
 } from '../types';
-import { questions } from '../data/questions';
+import { fetchQuestions } from '../services/api';
 
 const SESSION_KEY = 'ai-quiz-state';
 
@@ -27,6 +28,27 @@ export default function Quiz() {
   const navigate = useNavigate();
   const location = useLocation();
   const locationState = location.state as QuizLocationState | null;
+
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchQuestions()
+      .then((data) => {
+        if (!cancelled) setQuestions(data);
+      })
+      .catch((err) => {
+        if (!cancelled) setLoadError(err.message);
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Fresh router state (new quiz) takes priority; otherwise restore from session
   const [teamNames] = useState<TeamNames>(
@@ -90,7 +112,7 @@ export default function Quiz() {
       setRevealed(false);
       setAwaitingTeam(false);
     },
-    [currentIndex, scores, navigateToResults],
+    [currentIndex, scores, navigateToResults, questions.length],
   );
 
   // Called when "Next" button is clicked — ask which team gets the point
@@ -147,7 +169,7 @@ export default function Quiz() {
     setCurrentIndex((i) => i + 1);
     setRevealed(false);
     setAwaitingTeam(false);
-  }, [currentIndex, scores, navigateToResults]);
+  }, [currentIndex, scores, navigateToResults, questions.length]);
 
   const handleReveal = useCallback(() => {
     setRevealed(true);
@@ -170,6 +192,56 @@ export default function Quiz() {
   }, [currentIndex, scoredQuestions, handleSkip, requestNext]);
 
   const currentQuestion = questions[currentIndex];
+
+  if (isLoading) {
+    return (
+      <div
+        className="quiz-container"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '60vh',
+        }}
+      >
+        <p style={{ fontSize: '1.5rem' }}>⏳ Loading questions...</p>
+      </div>
+    );
+  }
+
+  if (loadError || questions.length === 0) {
+    return (
+      <div
+        className="quiz-container"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '60vh',
+          gap: '1rem',
+        }}
+      >
+        <p style={{ fontSize: '1.25rem', color: '#e74c3c' }}>
+          {loadError ? `❌ ${loadError}` : '😕 No questions found'}
+        </p>
+        <button
+          onClick={() => globalThis.location.reload()}
+          style={{
+            padding: '0.5rem 1.5rem',
+            fontSize: '1rem',
+            borderRadius: '8px',
+            border: 'none',
+            background: '#6c5ce7',
+            color: '#fff',
+            cursor: 'pointer',
+          }}
+        >
+          🔄 Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="quiz-container">

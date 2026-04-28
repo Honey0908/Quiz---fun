@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import type { QuizLocationState } from '../types';
 
 export default function Home() {
@@ -62,6 +62,10 @@ export default function Home() {
         <p className="home-hint">
           15 questions · 2 teams · infinite bragging rights 🏆
         </p>
+
+        <Link to="/admin" className="admin-link">
+          ⚙️ Manage Questions
+        </Link>
       </div>
     </div>
   );
