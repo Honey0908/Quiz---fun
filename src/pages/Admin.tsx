@@ -47,11 +47,17 @@ export default function Admin() {
     loadQuestions();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement> & { preventDefault: () => void }) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement> & { preventDefault: () => void },
+  ) => {
     e.preventDefault();
     setFormError(null);
 
-    if (!form.question.trim() || !form.answer.trim() || !form.explanation.trim()) {
+    if (
+      !form.question.trim() ||
+      !form.answer.trim() ||
+      !form.explanation.trim()
+    ) {
       setFormError('All fields are required');
       return;
     }
@@ -70,7 +76,9 @@ export default function Admin() {
       setForm(emptyForm);
       setEditingId(null);
     } catch (err: unknown) {
-      setFormError(err instanceof Error ? err.message : 'Failed to save question');
+      setFormError(
+        err instanceof Error ? err.message : 'Failed to save question',
+      );
     } finally {
       setIsSaving(false);
     }
@@ -97,7 +105,9 @@ export default function Admin() {
         setForm(emptyForm);
       }
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Failed to delete question');
+      setError(
+        err instanceof Error ? err.message : 'Failed to delete question',
+      );
     }
   };
 
@@ -174,7 +184,11 @@ export default function Admin() {
         {formError && <p className="admin-form-error">⚠️ {formError}</p>}
 
         <div className="admin-form-actions">
-          <button type="submit" className="admin-btn admin-btn-save" disabled={isSaving}>
+          <button
+            type="submit"
+            className="admin-btn admin-btn-save"
+            disabled={isSaving}
+          >
             {(() => {
               if (isSaving) return '💾 Saving...';
               if (editingId === null) return '➕ Add Question';
@@ -182,7 +196,11 @@ export default function Admin() {
             })()}
           </button>
           {editingId !== null && (
-            <button type="button" className="admin-btn admin-btn-cancel" onClick={handleCancel}>
+            <button
+              type="button"
+              className="admin-btn admin-btn-cancel"
+              onClick={handleCancel}
+            >
               Cancel
             </button>
           )}
@@ -192,7 +210,10 @@ export default function Admin() {
       {/* ── Questions List ── */}
       <div className="admin-list">
         {questions.map((q, i) => (
-          <div key={q.id} className={`admin-card ${editingId === q.id ? 'admin-card-editing' : ''}`}>
+          <div
+            key={q.id}
+            className={`admin-card ${editingId === q.id ? 'admin-card-editing' : ''}`}
+          >
             <div className="admin-card-header">
               <span className="admin-card-num">Q{i + 1}</span>
               <span className="admin-card-id">ID: {q.id}</span>
@@ -207,21 +228,33 @@ export default function Admin() {
             </p>
 
             <div className="admin-card-actions">
-              <button className="admin-btn admin-btn-edit" onClick={() => handleEdit(q)}>
+              <button
+                className="admin-btn admin-btn-edit"
+                onClick={() => handleEdit(q)}
+              >
                 ✏️ Edit
               </button>
               {deletingId === q.id ? (
                 <div className="admin-delete-confirm">
                   <span>Delete this question?</span>
-                  <button className="admin-btn admin-btn-delete-yes" onClick={() => handleDelete(q.id)}>
+                  <button
+                    className="admin-btn admin-btn-delete-yes"
+                    onClick={() => handleDelete(q.id)}
+                  >
                     Yes, delete
                   </button>
-                  <button className="admin-btn admin-btn-cancel-sm" onClick={() => setDeletingId(null)}>
+                  <button
+                    className="admin-btn admin-btn-cancel-sm"
+                    onClick={() => setDeletingId(null)}
+                  >
                     Cancel
                   </button>
                 </div>
               ) : (
-                <button className="admin-btn admin-btn-delete" onClick={() => setDeletingId(q.id)}>
+                <button
+                  className="admin-btn admin-btn-delete"
+                  onClick={() => setDeletingId(q.id)}
+                >
                   🗑️ Delete
                 </button>
               )}
