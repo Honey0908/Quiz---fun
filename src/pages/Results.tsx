@@ -18,7 +18,7 @@ export default function Results() {
     <div className="results-container">
       <div className="results-card">
         {isDraw ? (
-          <>
+           <>
             <div className="results-emoji">🤝</div>
             <h1 className="results-title">It's a Draw!</h1>
             <p className="results-subtitle">
