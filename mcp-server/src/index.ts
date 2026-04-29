@@ -159,6 +159,16 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Root — so Railway/browsers see a response at /
+app.get('/', (_req, res) => {
+  res.json({
+    name: 'ai-quiz-mcp-server',
+    status: 'running',
+    mcp_endpoint: '/mcp',
+    health: '/health',
+  });
+});
+
 // MCP POST — handles initialization + JSON-RPC requests
 app.post('/mcp', async (req, res) => {
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
@@ -225,9 +235,9 @@ app.delete('/mcp', async (req, res) => {
 
 // ─── Start Server ────────────────────────────────────────────────────────────
 
-const httpServer = app.listen(PORT, () => {
+const httpServer = app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(
-    `🚀 AI Quiz MCP server listening on http://localhost:${PORT}/mcp`,
+    `🚀 AI Quiz MCP server listening on http://0.0.0.0:${PORT}/mcp`,
   );
 });
 
