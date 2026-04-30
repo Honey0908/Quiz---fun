@@ -38,6 +38,9 @@ export function registerBulkCreateQuestions(server: McpServer) {
         ),
       );
 
+      // Notify connected clients that resources have changed
+      server.sendResourceListChanged();
+
       const summary = created
         .map((q) => `  • [${q.id}] ${q.question}`)
         .join('\n');

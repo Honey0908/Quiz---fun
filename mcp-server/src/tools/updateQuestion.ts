@@ -52,6 +52,9 @@ export function registerUpdateQuestion(server: McpServer) {
           data,
         });
 
+        // Notify connected clients that resources have changed
+        server.sendResourceListChanged();
+
         return {
           content: [
             {

@@ -16,6 +16,9 @@ export function registerDeleteQuestion(server: McpServer) {
       try {
         const deleted = await prisma.question.delete({ where: { id } });
 
+        // Notify connected clients that resources have changed
+        server.sendResourceListChanged();
+
         return {
           content: [
             {

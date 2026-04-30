@@ -22,6 +22,9 @@ export function registerCreateQuestion(server: McpServer) {
         data: { question, answer, explanation },
       });
 
+      // Notify connected clients that resources have changed
+      server.sendResourceListChanged();
+
       return {
         content: [
           {
