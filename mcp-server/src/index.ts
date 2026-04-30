@@ -236,9 +236,7 @@ app.delete('/mcp', async (req, res) => {
 // ─── Start Server ────────────────────────────────────────────────────────────
 
 const httpServer = app.listen(Number(PORT), '0.0.0.0', () => {
-  console.log(
-    `🚀 AI Quiz MCP server listening on http://0.0.0.0:${PORT}/mcp`,
-  );
+  console.log(`🚀 AI Quiz MCP server listening on http://0.0.0.0:${PORT}/mcp`);
 });
 
 // Graceful shutdown

@@ -29,6 +29,5 @@ RUN npx prisma generate
 COPY --from=builder /app/dist ./dist
 
 ENV NODE_ENV=production
-EXPOSE 3002
 
 CMD ["node", "dist/index.js"]
