@@ -16,6 +16,12 @@ import { registerQuizStatsResource } from './resources/quizStats.js';
 import { registerQuestionByIdResource } from './resources/questionById.js';
 import { registerSearchQuestionsResource } from './resources/searchQuestions.js';
 
+// ─── Prompts ─────────────────────────────────────────────────────────────────
+import { registerGenerateQuizQuestionPrompt } from './prompts/generateQuizQuestion.js';
+import { registerReviewQuestionPrompt } from './prompts/reviewQuestion.js';
+import { registerExplainAnswerPrompt } from './prompts/explainAnswer.js';
+import { registerCreateQuizSetPrompt } from './prompts/createQuizSet.js';
+
 // ─── MCP Server Factory ─────────────────────────────────────────────────────
 
 export function createMcpServer() {
@@ -41,6 +47,12 @@ export function createMcpServer() {
   registerQuizStatsResource(server);
   registerQuestionByIdResource(server);
   registerSearchQuestionsResource(server);
+
+  // Register prompts
+  registerGenerateQuizQuestionPrompt(server);
+  registerReviewQuestionPrompt(server);
+  registerExplainAnswerPrompt(server);
+  registerCreateQuizSetPrompt(server);
 
   return server;
 }
