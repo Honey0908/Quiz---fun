@@ -9,6 +9,12 @@ export function registerUpdateQuestion(server: McpServer) {
       title: 'Update Question',
       description:
         'Update an existing quiz question. Provide only the fields you want to change.',
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: false,
+      },
       inputSchema: z.object({
         id: z.number().int().positive().describe('The question ID to update'),
         question: z

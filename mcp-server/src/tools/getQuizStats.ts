@@ -9,6 +9,10 @@ export function registerGetQuizStats(server: McpServer) {
       title: 'Get Quiz Stats',
       description:
         'Get statistics about the quiz question database — total count, date range, and most recent question.',
+      annotations: {
+        readOnlyHint: true,
+        openWorldHint: false,
+      },
       inputSchema: z.object({}),
     },
     async () => {

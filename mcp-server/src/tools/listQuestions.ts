@@ -9,6 +9,10 @@ export function registerListQuestions(server: McpServer) {
       title: 'List Questions',
       description:
         'List all quiz questions, optionally filtered by search text',
+      annotations: {
+        readOnlyHint: true,
+        openWorldHint: false,
+      },
       inputSchema: z.object({
         search: z
           .string()

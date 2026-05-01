@@ -8,6 +8,10 @@ export function registerGetQuestion(server: McpServer) {
     {
       title: 'Get Question',
       description: 'Fetch a single quiz question by its ID',
+      annotations: {
+        readOnlyHint: true,
+        openWorldHint: false,
+      },
       inputSchema: z.object({
         id: z.number().int().positive().describe('The question ID to fetch'),
       }),

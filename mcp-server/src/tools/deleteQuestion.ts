@@ -8,6 +8,12 @@ export function registerDeleteQuestion(server: McpServer) {
     {
       title: 'Delete Question',
       description: 'Permanently delete a quiz question by its ID',
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: true,
+        idempotentHint: true,
+        openWorldHint: false,
+      },
       inputSchema: z.object({
         id: z.number().int().positive().describe('The question ID to delete'),
       }),

@@ -25,12 +25,19 @@ import { registerCreateQuizSetPrompt } from './prompts/createQuizSet.js';
 // ─── MCP Server Factory ─────────────────────────────────────────────────────
 
 export function createMcpServer() {
-  const server = new McpServer({
-    name: 'ai-quiz',
-    version: '1.0.0',
-    description:
-      'MCP server for managing AI Quiz questions — create and list questions directly from any MCP-compatible client.',
-  });
+  const server = new McpServer(
+    {
+      name: 'ai-quiz',
+      version: '1.0.0',
+      description:
+        'MCP server for managing AI Quiz questions — create and list questions directly from any MCP-compatible client.',
+    },
+    {
+      capabilities: {
+        logging: {},
+      },
+    },
+  );
 
   // Register tools
   registerCreateQuestion(server);

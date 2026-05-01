@@ -8,6 +8,12 @@ export function registerCreateQuestion(server: McpServer) {
     {
       title: 'Create Question',
       description: 'Create a new quiz question with answer and explanation',
+      annotations: {
+        readOnlyHint: false,
+        destructiveHint: false,
+        idempotentHint: false,
+        openWorldHint: false,
+      },
       inputSchema: z.object({
         question: z.string().min(1).describe('The quiz question text'),
         answer: z.string().min(1).describe('The correct answer'),
