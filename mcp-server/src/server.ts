@@ -9,6 +9,7 @@ import { registerDeleteQuestion } from './tools/deleteQuestion.js';
 import { registerBulkCreateQuestions } from './tools/bulkCreateQuestions.js';
 import { registerGetQuizStats } from './tools/getQuizStats.js';
 import { registerExportQuestions } from './tools/exportQuestions.js';
+import { registerGenerateAndSaveQuestion } from './tools/generateAndSaveQuestion.js';
 
 // ─── Resources ───────────────────────────────────────────────────────────────
 import { registerAllQuestionsResource } from './resources/allQuestions.js';
@@ -48,6 +49,7 @@ export function createMcpServer() {
   registerBulkCreateQuestions(server);
   registerGetQuizStats(server);
   registerExportQuestions(server);
+  registerGenerateAndSaveQuestion(server);
 
   // Register resources
   registerAllQuestionsResource(server);
