@@ -1,5 +1,7 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { completable } from '@modelcontextprotocol/sdk/server/completable.js';
 import { z } from 'zod';
+import { TOPIC_SUGGESTIONS } from '../lib/suggestions.js';
 
 export function registerCreateQuizSetPrompt(server: McpServer) {
   server.registerPrompt(
@@ -9,14 +11,26 @@ export function registerCreateQuizSetPrompt(server: McpServer) {
       description:
         'Generate a batch of quiz questions on a specific topic for a quiz session',
       argsSchema: {
-        topic: z
-          .string()
-          .describe(
-            'The topic or theme for the quiz set (e.g., "LLM fundamentals", "GitHub Copilot tips")',
-          ),
-        count: z
-          .string()
-          .describe('Number of questions to generate (e.g., "5", "10")'),
+        topic: completable(
+          z
+            .string()
+            .describe(
+              'The topic or theme for the quiz set (e.g., "LLM fundamentals", "GitHub Copilot tips")',
+            ),
+          (value: string) =>
+            TOPIC_SUGGESTIONS.filter((t: string) =>
+              t.toLowerCase().startsWith(value.toLowerCase()),
+            ),
+        ),
+        count: completable(
+          z
+            .string()
+            .describe('Number of questions to generate (e.g., "5", "10")'),
+          (value: string) =>
+            ['3', '5', '10', '15', '20'].filter((c: string) =>
+              c.startsWith(value),
+            ),
+        ),
       },
     },
     async ({ topic, count }) => ({

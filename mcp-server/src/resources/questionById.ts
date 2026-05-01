@@ -24,7 +24,7 @@ export function registerQuestionByIdResource(server: McpServer) {
         id: async (value) => {
           const questions = await prisma.question.findMany({
             where: {
-              id: { gte: parseInt(value) || 0 },
+              id: { gte: Number.parseInt(value) || 0 },
             },
             select: { id: true },
             take: 10,
@@ -39,8 +39,8 @@ export function registerQuestionByIdResource(server: McpServer) {
       mimeType: 'application/json',
     },
     async (uri, { id }) => {
-      const questionId = parseInt(id as string);
-      if (isNaN(questionId)) {
+      const questionId = Number.parseInt(id as string);
+      if (Number.isNaN(questionId)) {
         return {
           contents: [
             {

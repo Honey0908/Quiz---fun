@@ -1,6 +1,8 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { completable } from '@modelcontextprotocol/sdk/server/completable.js';
 import { z } from 'zod';
 import { prisma } from '../lib/prisma.js';
+import { TOPIC_SUGGESTIONS } from '../lib/suggestions.js';
 
 /**
  * Sampling-powered tool: asks the CLIENT's LLM to generate a quiz question,
@@ -23,12 +25,18 @@ export function registerGenerateAndSaveQuestion(server: McpServer) {
         openWorldHint: true, // involves LLM call via sampling
       },
       inputSchema: z.object({
-        topic: z
-          .string()
-          .min(1)
-          .describe(
-            'The topic for the generated question (e.g. "JavaScript closures")',
-          ),
+        topic: completable(
+          z
+            .string()
+            .min(1)
+            .describe(
+              'The topic for the generated question (e.g. "JavaScript closures")',
+            ),
+          (value: string) =>
+            TOPIC_SUGGESTIONS.filter((t: string) =>
+              t.toLowerCase().startsWith(value.toLowerCase()),
+            ),
+        ),
         difficulty: z
           .enum(['easy', 'medium', 'hard'])
           .optional()

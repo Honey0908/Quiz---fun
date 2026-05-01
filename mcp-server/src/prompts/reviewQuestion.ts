@@ -1,6 +1,8 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { completable } from '@modelcontextprotocol/sdk/server/completable.js';
 import { z } from 'zod';
 import { prisma } from '../lib/prisma.js';
+import { completeQuestionId } from '../lib/suggestions.js';
 
 export function registerReviewQuestionPrompt(server: McpServer) {
   server.registerPrompt(
@@ -10,11 +12,14 @@ export function registerReviewQuestionPrompt(server: McpServer) {
       description:
         'Review an existing quiz question for quality, accuracy, and clarity',
       argsSchema: {
-        questionId: z.string().describe('The ID of the question to review'),
+        questionId: completable(
+          z.string().describe('The ID of the question to review'),
+          completeQuestionId,
+        ),
       },
     },
     async ({ questionId }) => {
-      const id = parseInt(questionId);
+      const id = Number.parseInt(questionId);
       const question = await prisma.question.findUnique({ where: { id } });
 
       if (!question) {

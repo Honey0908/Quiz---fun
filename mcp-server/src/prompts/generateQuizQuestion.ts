@@ -1,5 +1,7 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { completable } from '@modelcontextprotocol/sdk/server/completable.js';
 import { z } from 'zod';
+import { TOPIC_SUGGESTIONS } from '../lib/suggestions.js';
 
 export function registerGenerateQuizQuestionPrompt(server: McpServer) {
   server.registerPrompt(
@@ -9,14 +11,26 @@ export function registerGenerateQuizQuestionPrompt(server: McpServer) {
       description:
         'Generate a new AI/tech quiz question on a given topic and difficulty level',
       argsSchema: {
-        topic: z
-          .string()
-          .describe(
-            'The topic for the question (e.g., "GitHub Copilot", "RAG", "prompt engineering")',
-          ),
-        difficulty: z
-          .enum(['easy', 'medium', 'advanced'])
-          .describe('Difficulty level of the question'),
+        topic: completable(
+          z
+            .string()
+            .describe(
+              'The topic for the question (e.g., "GitHub Copilot", "RAG", "prompt engineering")',
+            ),
+          (value: string) =>
+            TOPIC_SUGGESTIONS.filter((t: string) =>
+              t.toLowerCase().startsWith(value.toLowerCase()),
+            ),
+        ),
+        difficulty: completable(
+          z
+            .enum(['easy', 'medium', 'advanced'])
+            .describe('Difficulty level of the question'),
+          (value: string) =>
+            (['easy', 'medium', 'advanced'] as const).filter((d: string) =>
+              d.startsWith(value.toLowerCase()),
+            ),
+        ),
       },
     },
     async ({ topic, difficulty }) => ({
