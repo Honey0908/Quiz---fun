@@ -1,274 +1,115 @@
 import type { Question } from '../types';
 
 export const questions: Question[] = [
-  // ── EASY ────────────────────────────────────────────────────────────────
   {
     id: 1,
-    question: '💬 Which company created ChatGPT?',
-    answer: 'OpenAI',
-    explanation:
-      '🏢 OpenAI was founded in 2015 and released ChatGPT in November 2022 — it gained 1 million users in just 5 days, making it the fastest-growing app in history at the time!',
+    question: `✈️ What is Autopilot/Auto Mode in AI coding agents?`,
+    answer: `It is an autonomous setting that auto-approves agent actions to complete tasks without constant user prompts; Claude supports it via "Auto Mode" in Claude Code.`,
+    explanation: `🤖 Autopilot (or Auto Mode) shifts the AI from a passive assistant to an active developer. Instead of waiting for a user to manually click 'Approve' on every terminal command or file write, the agent runs in a continuous loop until a goal is achieved. While GitHub Copilot utilizes Autopilot to bypass approvals, Anthropic includes a background safety classifier in Claude Code Auto Mode to intelligently allow safe tasks automatically while halting and asking for human confirmation if a destructive or high-risk command is triggered.`
   },
   {
     id: 2,
-    question: '🤖 Which company created Claude AI?',
-    answer: 'Anthropic',
-    explanation:
-      '🛡️ Anthropic was founded in 2021 by former OpenAI researchers, including Dario and Daniela Amodei. Claude is their AI assistant, built with a focus on safety and helpfulness — guided by their "Constitutional AI" approach!',
+    question: `🤝 What is Agent Handoff in AI systems?`,
+    answer: `Agent Handoff is the process of transferring a task or conversation from one AI agent to another that is better suited to handle it.`,
+    explanation: `🔄 Instead of one agent doing everything, specialized agents can collaborate by handing off tasks. For example, a Coding Agent may hand off a deployment request to a DevOps Agent, or a Customer Support Agent may transfer a billing question to a Billing Agent. This allows each agent to focus on its expertise, resulting in more accurate and efficient task completion.`
   },
-
   {
     id: 3,
-    question: '🔵 What does the @ symbol do in GitHub Copilot Chat?',
-    answer:
-      'It references a participant or agent to scope the conversation (e.g. @workspace, @vscode)',
-    explanation:
-      '🎯 @workspace tells Copilot to search your entire project for context. @vscode lets you ask about editor settings. The @ symbol is your shortcut to bringing in the right expert for the job!',
+    question: `🎲 What is Sampling in an MCP server?`,
+    answer: `Sampling is a feature that allows an MCP server to request the AI model to generate text or perform reasoning on its behalf.`,
+    explanation: `🧠 Instead of implementing its own AI logic, an MCP (Model Context Protocol) server can ask the connected language model to "sample" a response. For example, a Git MCP server could ask the model to summarize a pull request, explain a code diff, or generate a commit message using the current repository context.`
   },
   {
     id: 4,
-    question: '📁 What is the # symbol used for in GitHub Copilot Chat?',
-    answer: 'Attaching a specific file or context reference to your prompt',
-    explanation:
-      '📎 Typing #filename.ts lets you attach a specific file to your Copilot conversation. Instead of Copilot guessing what code you mean, you hand it exactly the right context!',
+    question: `🚀 How many ways are there to deploy an MCP server?`,
+    answer: `Three main ways: Local (STDIO), Remote (SSE/HTTP), and Managed Cloud Containers.`,
+    explanation: `🌐 MCP servers can be deployed depending on your scale and access needs. 1) Local deployment runs on your machine via STDIO (e.g., using 'npx' for Node packages) for personal desktop apps like Claude Desktop or Cursor. 2) Remote deployment hosts the server via Server-Sent Events (SSE) over HTTPS, allowing multiple users to connect. 3) Managed deployment packages the server into a Docker container scaled on infrastructure like Google Cloud Run or AWS for enterprise workloads.`
   },
   {
     id: 5,
-    question: '🔢 What is a "token" in the context of LLMs?',
-    answer:
-      'A chunk of text (roughly 3-4 characters or ~¾ of a word) that the model processes as a single unit',
-    explanation:
-      '📊 LLMs don\'t read character-by-character or word-by-word — they use tokens. "unhappiness" might be 3 tokens. This is why context window sizes are measured in tokens, not words!',
+    question: `📢 What is a Server Notification in the MCP Inspector, and what kinds of notifications can a server send?`,
+    answer: `A Server Notification is a one-way message sent from an MCP server to the client without expecting a response.`,
+    explanation: `🔔 Server notifications keep the client informed about events or state changes while a request is in progress or when something changes on the server. Common examples include progress notifications for long-running tasks, logging notifications for debugging, resource change notifications when data is updated, and tool list or prompt list change notifications when available capabilities are modified. Unlike requests, notifications are asynchronous and do not require a reply from the client.`
   },
   {
     id: 6,
-    question: '🤖 What is "Agentic AI"?',
-    answer:
-      'AI that autonomously pursues goals over multiple steps by planning, calling tools, and adapting based on results',
-    explanation:
-      '🚀 Agentic AI goes beyond answering a single prompt — it breaks down a goal, decides on actions, executes tools (read files, run code, search web), evaluates the outcome, and loops until the task is complete, much like a human developer would!',
+    question: `🏁 What are the latest flagship models in the Claude Opus and OpenAI GPT series?`,
+    answer: `The latest flagship models are Claude Opus 4.8 and OpenAI GPT-5.5.`,
+    explanation: `🏗️ The frontier AI landscape features massive technical iterations. Anthropic's flagship is Claude Opus 4.8, which expands the context window to 1 million tokens and delivers elite reasoning alongside self-correcting autonomous capabilities. OpenAI competes at the same flagship tier with GPT-5.5, which integrates advanced multi-step computer use, natively scales across long-horizon codebases, and features a matching 1 million token context limit to execute complex tasks.`
   },
   {
     id: 7,
-    question: '🤝 What is "MCP"?',
-    answer: 'Model Context Protocol',
-    explanation:
-      '🔌 MCP is an open standard that lets AI models securely connect to external tools, APIs, and data sources — enabling agents to act beyond their training data!',
+    question: `🎭 What is the difference between Claude AI, Claude Code, and Claude Cowork?`,
+    answer: `Claude AI is a standard conversational chatbot, Claude Code is a CLI agent for developers, and Claude Cowork is a desktop agent for non-technical knowledge workers.`,
+    explanation: `🏢 Anthropic splits its ecosystem into three distinct interfaces based on the user's workflow. 1) Claude AI (Chat) is the traditional browser interface used for turn-based Q&A and writing text. 2) Claude Code is an advanced terminal/CLI application that allows an autonomous agent to execute shell commands, edit files, and build apps inside code repositories. 3) Claude Cowork is a graphical desktop interface built for non-technical professionals (like marketing or finance teams) to delegate multi-step computer tasks, organize messy local file systems, and build spreadsheets autonomously without touching a command-line interface.`
   },
   {
     id: 8,
-    question: '🎭 What is "role prompting" in AI engineering?',
-    answer:
-      'Instructing the model to adopt a specific persona or role to improve output quality',
-    explanation:
-      '👤 "You are a senior TypeScript engineer with 10 years of experience..." instantly shifts the model\'s tone, vocabulary, and depth. Role prompting is one of the simplest and most effective prompt engineering tricks!',
+    question: `📚 What is an LLM's Context Window?`,
+    answer: `The maximum number of tokens the model can process in a single request, including input and output.`,
+    explanation: `🧠 Everything inside the context window counts—system prompts, user messages, previous conversation history, tool outputs, and the model's response. If the limit is exceeded, older information must be removed or summarized.`
   },
-
-  // ── MEDIUM ───────────────────────────────────────────────────────────────
   {
     id: 9,
-    question:
-      '🔄 What is the difference between "zero-shot" and "one-shot" prompting?',
-    answer:
-      'Zero-shot = no examples given; One-shot = exactly one example given to guide the model',
-    explanation:
-      "🎯 Zero-shot relies purely on the model's training. One-shot gives it a single example to pattern-match from. Few-shot gives 2-5 examples. More examples generally = better accuracy for complex tasks!",
+    question: `🧩 What are the main components of a single AI prompt-response cycle?`,
+    answer: `A typical AI interaction consists of a System Prompt, User Prompt, Context/Conversation History, Tool Results (if any), and the Model's Response.`,
+    explanation: `⚙️ Before generating a response, the model processes multiple inputs together. The System Prompt defines the AI's behavior, the User Prompt contains the user's request, Context includes previous messages, Tool Results provide external information (such as MCP tools or web searches), and finally the model generates its Response. All of these components contribute to the total token count. For example, if the system prompt is 500 tokens, the conversation history is 1,000 tokens, the user prompt is 100 tokens, and tool output is 400 tokens, the model processes about 2,000 tokens before producing its answer.`
   },
   {
     id: 10,
-    question: '📐 What does "RAG" stand for in AI development?',
-    answer: 'Retrieval-Augmented Generation',
-    explanation:
-      '📦 RAG combines a retrieval step (fetching relevant docs/data) with generation so the LLM answers with up-to-date, context-specific information instead of just its training data!',
+    question: `📝 What is a System Prompt in an AI model?`,
+    answer: `A System Prompt is a high-priority instruction that defines the AI's role, behavior, rules, and constraints before it processes user requests.`,
+    explanation: `🧠 The system prompt acts as the AI's "operating manual." It tells the model how to behave throughout the conversation, such as "You are a helpful coding assistant" or "Always respond in JSON." For example, if the system prompt says "Only answer React-related questions," and a user asks about cooking, the model should politely decline or redirect the conversation according to those instructions. A system prompt is a persistent instruction block sent before the conversation — invisible to users, setting the AI's behavior, persona, tools, and knowledge. Unlike user messages that appear once per conversation, the system prompt is sent on every single API call. This means every extra token in your system prompt is multiplied across all your API calls. A 500-token system prompt across 10,000 daily calls = 5 billion extra tokens per day just from prompt overhead. This is exactly why caching the system prompt is so high-value.`
   },
+
   {
     id: 11,
-    question: '🛠️ In GitHub Copilot, what are "Tools" used for?',
-    answer: 'Extending Copilot with external actions and data sources',
-    explanation:
-      '🔧 Tools let Copilot call external functions — like searching the web, querying a database, or running code — going beyond pure text generation!',
+    question: `🎬 Name any 4 Bollywood movies whose titles start with the letter "Y".`,
+    answer: `Yuva, Yeh Jawaani Hai Deewani, Yaadon Ki Baaraat, Yaarana`,
+    explanation: `🍿 There are relatively few Bollywood movies that start with "Y". Some well-known examples include *Yuva*, *Yeh Jawaani Hai Deewani*, *Yaadon Ki Baaraat*, and *Yaarana*. This makes it a fun movie trivia question!`
   },
   {
     id: 12,
-    question: '🎓 What is a Copilot "Skill" (.instructions.md / SKILL.md)?',
-    answer:
-      'A file that provides domain-specific instructions to guide Copilot',
-    explanation:
-      '📚 Skills package reusable expertise — like testing patterns or API design rules — so Copilot applies consistent best practices automatically for that domain!',
+    question: `🎟️ What are the distinct types of tokens used to calculate AI usage and billing?`,
+    answer: `Input tokens (user requests), Output tokens (AI responses), Cached tokens (reused context history), and Reasoning tokens (internal thinking steps).`,
+    explanation: `💳 Modern AI models charge users based on four distinct token categories. Input tokens represent your prompt, while Output tokens are the generated response text. To lower expenses, Cached tokens refer to system instructions or previous conversation history that the server reuses at a major discount. Finally, specialized models leverage Reasoning tokens to compute hidden 'thinking steps' in the background before delivering the final answer, which are billed alongside standard output costs.`
   },
   {
     id: 13,
-    question: '🎬 Give any 5 character names from the "Dhurandhar"?',
-    answer:
-      'Hamza Ali Mazari, Rehman Dakait, SP Chaudhary Aslam, Major Iqbal, Ajay Sanyal',
-    explanation:
-      '🎭 This is a recall-based question where you identify key characters from the movie Dhurandhar, which features a mix of undercover agents, law enforcement, and underworld figures.',
+    question: `💰 How does an LLM price a short message like "hi , how are you" under the hood?`,
+    answer: `The phrase itself is only 5-6 tokens, but you are billed for the entire past chat history and system prompts sent alongside it.`,
+    explanation: `🧮 LLMs have no local memory, meaning they cannot remember what was said in the previous turn. Every time you send a new message, the platform bundles your text with the entire preceding conversation history and system instructions, converting them into tokens (roughly 4 characters each). You are billed a lower rate for this cumulative input context, and a higher premium rate for the new output tokens the model generates in response.`
   },
   {
     id: 14,
-    question:
-      '🤔 What is the difference between Copilot Agent mode, Plan mode, and Ask mode?',
-    answer:
-      'Ask = conversational Q&A only; Plan = generates a step-by-step plan for review before acting; Agent = autonomously executes the plan by calling tools and editing files',
-    explanation:
-      '🗺️ Ask mode just answers questions. Plan mode produces a structured action plan and waits for your approval. Agent mode goes further — it reads files, runs commands, and iterates until the goal is done, all in one go.',
+    question: `🗺️ What is Graphify and how does it optimize AI codebase context?`,
+    answer: `Graphify parses a repository once to build a structured knowledge graph, stopping the AI from repeatedly rereading files.`,
+    explanation: `🌿 AI assistants often re-read files file-by-file across different chat sessions, eating up context windows. Graphify runs a local extraction command to build a visual, structured map of dependencies and code relationships. Instead of loading every source file, the AI queries this pre-built graph to instantly understand project architecture, lowering initialization token costs by up to 70%.`
   },
+
   {
     id: 15,
-    question: '⚔️ What is the difference between Copilot Skills and Agents?',
-    answer:
-      'Skills are passive instruction files that shape HOW Copilot responds; Agents are active runtimes that autonomously plan, call tools, and take actions',
-    explanation:
-      "📘 A Skill (.instructions.md / SKILL.md) is like a rulebook — it changes the model's behaviour through injected context. An Agent is an execution engine that reads that rulebook and then actually does the work: running tools, editing files, and iterating toward a goal.",
+    question: `📊 If a React dashboard makes 10,000 real-time API calls daily using an identical 2,000-token system prompt, how is it billed?`,
+    answer: `By default, it bills 20 million system tokens daily, but implementing Prompt Caching reduces these repetitive costs by up to 90%.`,
+    explanation: `📉 Your team is building a React dashboard that makes 10,000 API calls per day, each with the same 2,000-token system prompt. Without caching, how much do you pay just for that system prompt daily on Sonnet 4.6? How much with caching (after day 1)? Calculation hard Answer / What to cover Without caching: 10,000 calls × 2,000 tokens × $3/MTok = $0.06 per call × 10,000 = $60/day just for the system prompt. With caching: 1 cache write per day (tiny) + 9,999 reads at $0.30/MTok = 9,999 × 2,000 tokens × $0.30/MTok ≈ $6/day. Caching saves ~$54/day = ~$1,620/month from one optimization. This is a real calculation your team should run on your actual system prompt size. In most production apps, caching the system prompt is the single biggest easy win.`
   },
   {
     id: 16,
-    question: '🌐 Name 7 popular MCP servers available today.',
-    answer:
-      'GitHub, Playwright, Postman, Notion, GitKraken, Context7, Sequential Thinking',
-    explanation:
-      '🔌 MCP servers extend Copilot agents: GitHub (repo actions), Playwright (browser automation), Postman (API testing), Notion (workspace data), GitKraken (git/PR workflows), Context7 (live library docs), Sequential Thinking (structured reasoning).',
+    question: `⏳ Why does Claude use a 5-hour rolling window to reset its usage limits?`,
+    answer: `To manage global server demand and compute costs using a dynamic sliding window triggered by your first prompt.`,
+    explanation: `📉 Anthropic implements a 5-hour rolling window rather than a fixed calendar reset to ensure fair server availability. The timer starts the moment you send your first message, and your used tokens gradually 'age out' and refresh 5 hours later. This stops heavy users from overloading infrastructure while allowing developers to space out work sessions. Note that during high-congestion peak hours, Anthropic may dynamically tighten this 5-hour message allowance based on real-time server traffic.`
   },
 
-  // ── ADVANCED ─────────────────────────────────────────────────────────────
   {
     id: 17,
-    question:
-      '🗂️ In Copilot Skills (.instructions.md), what does the "applyTo" frontmatter field control?',
-    answer:
-      'Which file glob patterns automatically activate the skill/instructions',
-    explanation:
-      '📌 Setting `applyTo: "**/*.test.ts"` means Copilot loads those testing instructions only when working on test files — keeping context focused and avoiding instruction bloat.',
+    question: `📦 What is a Batch API, and why do companies use it for large data pipelines?`,
+    answer: `An asynchronous endpoint that processes large collections of prompt requests in the background at a 50% pricing discount.`,
+    explanation: `⏳ Standard APIs execute synchronously, charging a premium for instantaneous token generation. A Batch API allows developers to compile up to thousands of requests into a single JSONL file and upload it to a provider like OpenAI or Anthropic. The infrastructure processes these requests during off-peak resource windows—guaranteeing completion within a set timeframe (often 1 to 24 hours)—allowing organizations to manage massive offline analytical or evaluation pipelines for exactly half the operational cost.`
   },
   {
     id: 18,
-    question:
-      '🔗 In an MCP server setup, what is a "resource" vs a "tool" vs a "prompt"?',
-    answer:
-      'Resource = read-only data the model can fetch; Tool = callable action with side-effects; Prompt = reusable templated instruction',
-    explanation:
-      '📚 MCP separates concerns cleanly: resources expose context (files, DB rows), tools perform actions (run query, write file), and prompts are pre-built message templates — together they form a composable AI capability layer.',
+    question: `🎯 What are the core criteria used to choose the proper AI model for a production task?`,
+    answer: `Balancing task complexity, context window size requirements, latency needs, and operational token costs.`,
+    explanation: `⚖️ Selecting an LLM involves mapping architectural constraints to model profiles. Simple tasks like text classification are routed to fast, cheap 'mini' models to optimize latency and cost. Massive data extraction or cross-file code refactoring requires deep context capacities and heavy reasoning footprints. Engineering teams use public leaderboards like Chatbot Arena alongside localized test suites to pick the most efficient model that safely clears their technical baseline.`
   },
-  {
-    id: 19,
-    question:
-      '📄 What is the difference between .github/copilot-instructions.md and *.instructions.md files?',
-    answer:
-      'copilot-instructions.md applies globally to every chat; *.instructions.md files are scoped via "applyTo" globs and activate only for matching files',
-    explanation:
-      '🎯 .github/copilot-instructions.md is always injected into every Copilot Chat session. *.instructions.md (e.g. in .github/instructions/) use frontmatter like `applyTo: "**/*.tsx"` to load domain-specific rules only when relevant files are open — avoiding context bloat.',
-  },
-  {
-    id: 20,
-    question: '🧬 What is "embedding" in AI and how is it used in code search?',
-    answer:
-      'Converting text/code into a numerical vector that captures semantic meaning, enabling similarity search',
-    explanation:
-      '🔍 Embeddings let you find code that is semantically similar — not just keyword matched. "fetch user data" and "retrieve account info" would have similar embeddings even though the words differ!',
-  },
-  {
-    id: 21,
-    question:
-      '🪝 What are "hooks" in GitHub Copilot / AI agent workflows, and when should you use them?',
-    answer:
-      'Hooks are event-driven callbacks that trigger custom logic at defined points in the agent lifecycle (e.g. before/after a tool call or response)',
-    explanation:
-      '🔗 Hooks let you intercept the agent loop — for example, a pre-tool hook can validate or log a planned action, and a post-response hook can reformat output. Use them for auditing, guardrails, telemetry, or injecting extra context at runtime without changing the core prompt.',
-  },
-  {
-    id: 22,
-    question:
-      '📦 What happens when an AI agent\'s context window fills up, and how can you "compact" it?',
-    answer:
-      'Older context is truncated; in GitHub Copilot you can use /compact to summarise and reduce the current conversation context',
-    explanation:
-      '🗜️ When the context window fills up, earlier messages are dropped, which can affect accuracy. In GitHub Copilot (VS Code), the /compact command helps by summarising the conversation into a shorter version, freeing up space while keeping important context so the agent can continue effectively.',
-  },
-  {
-    id: 23,
-    question:
-      '☁️ What is the difference between a Cloud agent, a Background agent, and a Local agent?',
-    answer:
-      'Cloud = runs on provider servers (persistent, shareable); Background = runs asynchronously without blocking your IDE; Local = runs on your machine with direct file/terminal access',
-    explanation:
-      '🖥️ Local agents (e.g. Copilot in VS Code) run in your editor with full filesystem access. Background agents execute tasks asynchronously — you can kick one off and check results later. Cloud agents (e.g. GitHub Copilot Workspace) run entirely on remote infrastructure, enabling collaboration and longer-running jobs without tying up your laptop.',
-  },
-  {
-    id: 24,
-    question:
-      '🛠️ Name the top 5 most widely used AI coding assistants available in 2026.',
-    answer:
-      'GitHub Copilot, Cursor, Claude (Anthropic), ChatGPT / Codex (OpenAI), Gemini Code Assist (Google)',
-    explanation:
-      '🚀 GitHub Copilot (Microsoft/GitHub) leads the market with deep IDE integration. Cursor took the developer world by storm with its AI-native editor. Claude (Anthropic) powers many coding workflows via API and integrations. ChatGPT/Codex (OpenAI) remains hugely popular for code generation. Gemini Code Assist (Google) rounds out the top 5 with strong cloud and workspace integration. Honourable mentions: Amazon Q, Tabnine, and Windsurf (Codeium)!',
-  },
-  {
-    id: 25,
-    question: '🧭 What is an "orchestrator" in AI agent architecture?',
-    answer: 'A component that manages planning, tool usage, and execution flow',
-    explanation:
-      '🎯 Orchestrators coordinate multiple steps, tools, and agents — acting as the brain of an agentic system.',
-  },
-  {
-    id: 26,
-    question:
-      '⚡ What are the latest stable versions of Next.js and React as of early 2026?',
-    answer: 'Next.js 16.2 and React 19.2',
-    explanation:
-      '🚀 Next.js 16 launched in October 2025 with Turbopack as the default bundler, Cache Components, and React 19.2 support — followed by 16.1 (stable Turbopack file system caching) and 16.2 (AI-ready scaffolding, experimental Agent DevTools). ⚛️ React 19 dropped in December 2024, React 19.1 in June 2025, and React 19.2 in October 2025 — introducing the <Activity /> component, useEffectEvent hook, and Performance Tracks in Chrome DevTools!',
-  },
-  {
-    id: 27,
-    question:
-      '🏷️ What is "agent handoff" and what data must be passed during one?',
-    answer:
-      'Transferring control from one agent to another mid-task; the handoff payload must include the current goal, relevant conversation history, tool results so far, and any constraints the receiving agent must respect',
-    explanation:
-      '🤝 A handoff without context is like handing a case to a new lawyer without briefing them. The sending agent packages a structured handoff object — goal, progress, constraints, outputs — so the receiving agent can pick up exactly where the previous one left off, with no loss of state!',
-  },
-  {
-    id: 28,
-    question:
-      '🧠 If you want to customize Copilot responses in the chat window, what should you configure?',
-    answer:
-      'Update memory/instruction context: use user memory for persistent preferences and add .github/copilot-instructions.md or scoped *.instructions.md files',
-    explanation: `Simple mental model 📌
-
-Memory = your personal behavior preference layer
-Global instruction file = always-on project rulebook
-Scoped instruction files = conditional rulebooks by file/task
-Current prompt = immediate request for this one response`,
-  },
-  {
-    id: 29,
-    question:
-      '🏆 In Anthropic Claude, which model tier is considered the most capable overall?',
-    answer: 'Opus (the Claude Opus tier) / Mythos (the latest and greatest)',
-    explanation:
-      '🧩 Anthropic uses model tiers like Haiku (fast/light), Sonnet (balanced), and Opus (highest capability). So if someone asks for the "best" Claude model in terms of raw capability, the answer is the latest Claude Opus release.',
-  },
-  // {
-  //   id: 30,
-  //   question: '🔁 What is "prompt chaining" in AI agent workflows?',
-  //   answer: 'Passing the output of one prompt as input to the next',
-  //   explanation:
-  //     '⛓️ Prompt chaining breaks complex tasks into steps — each LLM call does one job and feeds its result into the next, improving accuracy and reducing errors!',
-  // },
-  // {
-  //   id: 31,
-  //   question:
-  //     '🔨 Can you give 3 real examples of tools an AI agent can use to complete a task?',
-  //   answer:
-  //     'Tool use means the agent calls external functions during its reasoning loop — e.g. read_file, run_terminal, browser_navigate',
-  //   explanation:
-  //     '⚙️ Instead of only generating text, an agent can invoke structured tools: read_file (fetch source code), run_terminal (execute shell commands), browser_navigate (open a webpage). Each tool call returns a result that the agent uses to plan its next step.',
-  // },
-  // {
-  //   id: 32,
-  //   question: '🔗 What is n8n and what is it used for?',
-  //   answer:
-  //     'n8n is a workflow automation tool that connects apps, APIs, and services to automate tasks',
-  //   explanation:
-  //     '⚙️ n8n (short for "nodemation") lets you build workflows visually or with code — like triggering actions, calling APIs, processing data, and integrating tools. It is similar to Zapier but more developer-friendly and can be self-hosted.',
-  // },
-];
+]
